@@ -11,6 +11,8 @@ export default defineConfig({
     platformProxy: {
       enabled: true,
     },
+    // Disable automatic session KV binding (not needed for static site)
+    sessions: false,
   }),
   integrations: [
     tailwind({ applyBaseStyles: false }),
@@ -21,7 +23,6 @@ export default defineConfig({
       { protocol: 'https', hostname: 'imagedelivery.net' },
     ],
   },
-  vite: {
-    build: { cssMinify: 'lightningcss' },
-  },
+  // Remove cssMinify: 'lightningcss' — not bundled in CF Pages build env
+  // Vite defaults to esbuild CSS minification which works everywhere
 });
