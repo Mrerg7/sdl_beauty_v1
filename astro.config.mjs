@@ -8,10 +8,7 @@ export default defineConfig({
   output: 'static',
   adapter: cloudflare({
     imageService: 'cloudflare',
-    platformProxy: {
-      enabled: true,
-    },
-    // Disable automatic session KV binding (not needed for static site)
+    platformProxy: { enabled: true },
     sessions: false,
   }),
   integrations: [
@@ -23,6 +20,11 @@ export default defineConfig({
       { protocol: 'https', hostname: 'imagedelivery.net' },
     ],
   },
-  // Remove cssMinify: 'lightningcss' — not bundled in CF Pages build env
-  // Vite defaults to esbuild CSS minification which works everywhere
+  vite: {
+    build: {
+      // Explicitly use esbuild for CSS — avoids Vite 6 auto-selecting
+      // lightningcss which is not available in the CF Pages build env
+      cssMinify: 'esbuild',
+    },
+  },
 });
