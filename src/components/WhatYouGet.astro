@@ -1,0 +1,99 @@
+---
+const assets = [
+  { icon: '◇', label: 'sdl.beauty domain', detail: 'Premium .beauty TLD, 3-letter acronym. Highly memorable and brandable.' },
+  { icon: '◇', label: 'Brand identity foundation', detail: 'Clean visual identity ready to build on — logo, type, color system.' },
+  { icon: '◇', label: 'Scottsdale positioning', detail: "Pre-built market narrative in AZ's highest-income aesthetic market." },
+  { icon: '◇', label: 'SEO-ready website', detail: 'Structured data, sitemap, OG meta, Cloudflare Pages global edge delivery.' },
+  { icon: '◇', label: 'No liabilities', detail: 'Zero customer relationships, reviews, or reputation to inherit. Start clean.' },
+  { icon: '◇', label: 'Immediate transfer', detail: 'Domain and brand assets transfer upon confirmed acquisition.' },
+];
+---
+<section class="wyg" aria-labelledby="wyg-heading">
+  <div class="container">
+    <div class="wyg-layout">
+      <div class="wyg-left reveal">
+        <p class="ornament">What's Included</p>
+        <h2 id="wyg-heading">Everything to<br /><em>launch immediately.</em></h2>
+        <p class="wyg-intro">
+          SDL Beauty arrives as a complete brand package — domain, identity,
+          positioning, and a Scottsdale story that resonates with affluent clientele
+          the moment they encounter it.
+        </p>
+      </div>
+      <ul class="wyg-list" role="list">
+        {assets.map(a => (
+          <li class="wyg-item reveal">
+            <span class="wyg-icon" aria-hidden="true">{a.icon}</span>
+            <div>
+              <strong class="wyg-label">{a.label}</strong>
+              <p class="wyg-detail">{a.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+.wyg {
+  padding-block: clamp(var(--space-16), 8vw, var(--space-24));
+  background: var(--color-surface);
+}
+.wyg-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-8), 6vw, var(--space-16));
+  align-items: start;
+}
+.wyg-left h2 {
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.wyg-left h2 em { font-style: italic; color: var(--color-primary); }
+.wyg-intro {
+  font-size: var(--text-base);
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 46ch;
+}
+.wyg-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+.wyg-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+.wyg-icon {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+.wyg-label {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: var(--text-lg);
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+.wyg-detail {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 100%;
+}
+@media (max-width: 720px) {
+  .wyg-layout { grid-template-columns: 1fr; }
+  .wyg-intro { max-width: 100%; }
+}
+</style>

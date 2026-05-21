@@ -1,0 +1,81 @@
+---
+const email = 'sales@desertrich.com';
+const year = new Date().getFullYear();
+---
+<footer class="footer" role="contentinfo">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <p class="footer-wordmark">SDL<span>Beauty</span></p>
+      <p class="footer-tagline">Scottsdale · Arizona · A Premium Brand Opportunity</p>
+    </div>
+    <div class="footer-contact">
+      <p class="footer-label">Brand Acquisition Inquiries</p>
+      <a href={`mailto:${email}`} class="footer-email">{email}</a>
+    </div>
+    <p class="footer-copy">&copy; {year} SDL Beauty · sdl.beauty · All brand assets reserved.</p>
+  </div>
+</footer>
+
+<style>
+.footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-12) var(--space-8);
+  background: var(--color-surface);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-8);
+  align-items: start;
+}
+.footer-wordmark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: var(--text-xl);
+  font-weight: 300;
+  color: var(--color-text);
+  letter-spacing: .05em;
+}
+.footer-wordmark span {
+  font-family: 'Jost', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 300;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-left: .4rem;
+  color: var(--color-text-faint);
+}
+.footer-tagline {
+  font-size: var(--text-xs);
+  font-weight: 300;
+  letter-spacing: .12em;
+  color: var(--color-text-faint);
+  margin-top: var(--space-2);
+  text-transform: uppercase;
+}
+.footer-label {
+  font-size: var(--text-xs);
+  font-weight: 300;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2);
+}
+.footer-email {
+  font-size: var(--text-base);
+  color: var(--color-primary);
+  transition: color var(--transition);
+}
+.footer-email:hover { color: var(--color-primary-dark); }
+.footer-copy {
+  grid-column: 1 / -1;
+  font-size: var(--text-xs);
+  font-weight: 300;
+  color: var(--color-text-faint);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-6);
+}
+@media (max-width: 600px) {
+  .footer-inner { grid-template-columns: 1fr; }
+}
+</style>

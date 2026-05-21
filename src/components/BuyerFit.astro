@@ -1,0 +1,83 @@
+---
+const buyers = [
+  'Med spa groups seeking luxury Southwest expansion',
+  'Aesthetic clinic chains building a premium sub-brand',
+  'Private equity in the wellness & aesthetics vertical',
+  'Entrepreneurs entering the $16B+ med spa industry',
+  'Plastic surgery practices expanding into non-surgical',
+  'Investors seeking a turnkey Scottsdale beauty brand',
+];
+---
+<section class="buyer-fit" aria-labelledby="buyer-heading">
+  <div class="container bf-inner">
+    <div class="bf-text reveal">
+      <p class="ornament">Ideal Acquirer</p>
+      <h2 id="buyer-heading">Is this yours<br /><em>to move forward?</em></h2>
+      <p class="bf-body">
+        SDL Beauty is purpose-built for an operator, group, or investor
+        who understands that brand equity in luxury aesthetics compounds over time.
+        If any of these describe you, reach out.
+      </p>
+      <a href="mailto:sales@desertrich.com" class="btn-cta" style="margin-top: var(--space-8)">
+        Contact sales@desertrich.com
+      </a>
+    </div>
+    <ul class="bf-list reveal" role="list">
+      {buyers.map(b => (
+        <li class="bf-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          {b}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.buyer-fit {
+  padding-block: clamp(var(--space-16), 8vw, var(--space-24));
+  background: var(--color-surface-2);
+}
+.bf-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(var(--space-8), 6vw, var(--space-16));
+  align-items: center;
+}
+.bf-text h2 {
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.bf-text h2 em { font-style: italic; color: var(--color-primary); }
+.bf-body {
+  font-size: var(--text-base);
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 48ch;
+}
+.bf-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.bf-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-base);
+  font-weight: 300;
+  color: var(--color-text-muted);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+@media (max-width: 720px) {
+  .bf-inner { grid-template-columns: 1fr; }
+  .bf-body { max-width: 100%; }
+}
+</style>

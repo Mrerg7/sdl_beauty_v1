@@ -1,0 +1,98 @@
+---
+const pillars = [
+  {
+    number: '01',
+    title: 'The Right Address',
+    body: 'Scottsdale is the Beverly Hills — or Calabasas — of Arizona. A market where clients expect premium, pay premium, and return.',
+  },
+  {
+    number: '02',
+    title: 'An Unforgettable Domain',
+    body: 'sdl.beauty is a three-letter acronym on a premium .beauty TLD. Memorable, type-able, and instantly positioned at the intersection of luxury and aesthetics.',
+  },
+  {
+    number: '03',
+    title: 'Industry Tailwinds',
+    body: 'The US med spa industry is a $16B+ vertical growing at 14% CAGR. Botox, filler, laser — demand in high-income metros is structurally strong.',
+  },
+  {
+    number: '04',
+    title: 'Blank-Slate Advantage',
+    body: 'No legacy baggage. Clean brand identity. No Yelp skeletons. SDL Beauty lets you define the narrative entirely on your own terms from day one.',
+  },
+];
+---
+<section class="brand-value" aria-labelledby="brand-value-heading">
+  <div class="container">
+    <div class="bv-header reveal">
+      <p class="ornament">Why SDL Beauty</p>
+      <h2 id="brand-value-heading">Four reasons this brand<br /><em>commands attention.</em></h2>
+    </div>
+    <div class="bv-grid">
+      {pillars.map((p) => (
+        <article class="bv-card reveal">
+          <span class="bv-num" aria-hidden="true">{p.number}</span>
+          <h3 class="bv-title">{p.title}</h3>
+          <p class="bv-body">{p.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.brand-value {
+  padding-block: clamp(var(--space-16), 8vw, var(--space-24));
+  background: var(--color-surface);
+}
+.bv-header {
+  text-align: left;
+  margin-bottom: var(--space-12);
+}
+.bv-header h2 {
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  margin-top: var(--space-4);
+  color: var(--color-text);
+}
+.bv-header h2 em { font-style: italic; color: var(--color-primary); }
+.bv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: var(--space-6);
+}
+.bv-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.bv-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.bv-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: var(--text-3xl);
+  font-weight: 300;
+  color: rgba(184, 150, 90, 0.2);
+  line-height: 1;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+.bv-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: var(--text-xl);
+  font-weight: 400;
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+}
+.bv-body {
+  font-size: var(--text-base);
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 100%;
+}
+</style>

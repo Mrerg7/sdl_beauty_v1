@@ -1,0 +1,129 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = 'SDL Beauty — Scottsdale Luxury Med Spa Brand | Available',
+  description = 'SDL Beauty is an ultra-premium med spa brand rooted in Scottsdale, AZ — the Beverly Hills of Arizona. This rare brand acquisition opportunity is available now. Contact sales@desertrich.com.',
+  ogImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/70f9edbb-f745-453c-c1e3-0547940a9100/public',
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+
+const siteName = 'SDL Beauty';
+---
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f0e8" />
+
+  <!-- Primary SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={canonicalURL} />
+  <meta property="og:site_name"   content={siteName} />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={ogImage} />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"   content="SDL Beauty — Scottsdale luxury med spa brand" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={ogImage} />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://sdl.beauty/#website",
+        "url": "https://sdl.beauty/",
+        "name": "SDL Beauty",
+        "description": description,
+        "potentialAction": {
+          "@type": "ContactAction",
+          "target": "mailto:sales@desertrich.com",
+          "name": "Acquire This Brand"
+        }
+      },
+      {
+        "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+        "@id": "https://sdl.beauty/#business",
+        "name": "SDL Beauty",
+        "description": description,
+        "url": "https://sdl.beauty/",
+        "logo": ogImage,
+        "image": ogImage,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Scottsdale",
+          "addressRegion": "AZ",
+          "addressCountry": "US"
+        },
+        "priceRange": "$$$",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "sales@desertrich.com",
+          "contactType": "sales"
+        },
+        "sameAs": ["https://sdl.beauty/"]
+      },
+      {
+        "@type": "Offer",
+        "@id": "https://sdl.beauty/#offer",
+        "name": "SDL Beauty Brand Acquisition",
+        "description": "Premium luxury med spa brand available for acquisition. Includes sdl.beauty domain, brand identity, and Scottsdale market positioning.",
+        "seller": {
+          "@type": "Organization",
+          "name": "Desert Rich",
+          "email": "sales@desertrich.com"
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Scottsdale, Arizona"
+        },
+        "category": "Brand Acquisition"
+      }
+    ]
+  })} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- SVG Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23b8965a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia' font-size='16' font-weight='600' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
+
+  <slot name="head" />
+</head>
+<body>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 btn-cta">Skip to content</a>
+  <slot />
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

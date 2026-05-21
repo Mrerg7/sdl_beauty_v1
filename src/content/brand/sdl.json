@@ -1,0 +1,16 @@
+{
+  "siteName": "SDL Beauty",
+  "tagline": "Scottsdale's Premier Luxury Med Spa Brand",
+  "domain": "sdl.beauty",
+  "description": "SDL Beauty — the definitive luxury med spa brand for Scottsdale, AZ. The Beverly Hills of the Southwest. A rare brand acquisition opportunity available now.",
+  "city": "Scottsdale",
+  "state": "AZ",
+  "email": "sales@desertrich.com",
+  "ogImage": "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/70f9edbb-f745-453c-c1e3-0547940a9100/public",
+  "heroImages": [
+    "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/70f9edbb-f745-453c-c1e3-0547940a9100/public",
+    "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf24a1e4-852d-4a38-570e-50eeef637800/public",
+    "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/daad02ae-50dc-4afc-03d4-48a77d7aba00/public"
+  ],
+  "priceRange": "$$$"
+}

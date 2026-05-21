@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import BrandValue from '../components/BrandValue.astro';
+import Gallery from '../components/Gallery.astro';
+import WhatYouGet from '../components/WhatYouGet.astro';
+import BuyerFit from '../components/BuyerFit.astro';
+import AcquisitionCTA from '../components/AcquisitionCTA.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+import { getEntry } from 'astro:content';
+const brand = await getEntry('brand', 'sdl');
+const { heroImages, email, ogImage, description, tagline } = brand.data;
+---
+<Base
+  title={`SDL Beauty — ${tagline}`}
+  description={description}
+  ogImage={ogImage}
+  canonicalURL="https://sdl.beauty/"
+>
+  <Nav />
+  <main id="main-content">
+    <Hero images={heroImages} email={email} />
+    <BrandValue />
+    <Gallery images={heroImages} />
+    <WhatYouGet />
+    <BuyerFit />
+    <AcquisitionCTA />
+  </main>
+  <Footer />
+</Base>
