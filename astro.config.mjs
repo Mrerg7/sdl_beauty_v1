@@ -1,16 +1,11 @@
 import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/cloudflare';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://sdl.beauty',
   output: 'static',
-  adapter: cloudflare({
-    imageService: 'cloudflare',
-    platformProxy: { enabled: true },
-    sessions: false,
-  }),
+  trailingSlash: 'always',
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap(),

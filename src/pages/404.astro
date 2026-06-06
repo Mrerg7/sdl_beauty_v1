@@ -1,10 +1,14 @@
 ---
+import { Fragment } from 'astro/jsx-runtime';
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
-<Base title="Page Not Found — SDL Beauty">
+<Base title="Page Not Found — SDL Beauty" canonicalURL="https://sdl.beauty/404/">
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+  </Fragment>
   <Nav />
   <main id="main-content" style="min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-16) var(--space-4)">
     <div>
