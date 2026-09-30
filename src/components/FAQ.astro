@@ -1,0 +1,53 @@
+---
+const faqs = [
+  {
+    q: 'Is sdl.beauty for sale?',
+    a: 'Yes. sdl.beauty — a premium 3-letter .beauty domain — is available now as part of the SDL Beauty luxury med spa brand package for Scottsdale, AZ. Contact sales@desertrich.com to acquire or make an offer.',
+  },
+  {
+    q: 'What exactly is included?',
+    a: 'The sdl.beauty domain, brand identity foundation (logo, type, color system), Scottsdale market positioning, and this SEO-ready website with structured data. No customers, reviews, or liabilities transfer — you start clean.',
+  },
+  {
+    q: 'How does the transfer work?',
+    a: 'Via escrow-secured domain transfer at the registrar of your choice. Funds are held by a licensed escrow service and released only when the domain is in your account. Brand assets transfer upon confirmed acquisition.',
+  },
+  {
+    q: 'Why a .beauty domain for a med spa?',
+    a: 'The .beauty TLD instantly positions the brand in aesthetics, is shorter and more memorable than .com alternatives, and stands out in a $16B+ US med spa market where premium branding commands premium pricing.',
+  },
+  {
+    q: 'Can I make an offer instead of buying outright?',
+    a: 'Yes. Serious offers are invited — email sales@desertrich.com with your offer, timeline, and intended use. Confidential inquiries and NDAs are welcome.',
+  },
+  {
+    q: 'Who is the ideal buyer?',
+    a: 'Med spa groups expanding in the Southwest, aesthetic chains building a premium sub-brand, plastic surgery practices adding non-surgical, or investors entering the wellness and aesthetics vertical.',
+  },
+];
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+  })),
+};
+---
+<section class="faq" aria-labelledby="faq-heading">
+  <div class="container container--narrow">
+    <p class="ornament reveal">Domain sale FAQ</p>
+    <h2 id="faq-heading" class="reveal" style="font-size:var(--text-2xl);font-weight:300;margin:var(--space-4) 0 var(--space-8)">Premium domain questions, <em style="color:var(--color-primary)">answered.</em></h2>
+    <div class="reveal">
+      {faqs.map(f => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+</section>

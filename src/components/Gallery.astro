@@ -8,6 +8,8 @@ const captions = [
   'The SDL Beauty brand vision — elevated med spa experience',
   'Desert luxury — where wellness meets architecture',
 ];
+// Cloudflare Images variants for responsive loading (free plan friendly)
+const variant = (src: string, w: number) => `${src}?w=${w}`;
 ---
 <section class="gallery" aria-label="Brand imagery">
   <div class="container gallery-container">
@@ -18,11 +20,14 @@ const captions = [
       {images.map((src, i) => (
         <figure class={`gallery-item gallery-item--${i} reveal`} style={`--delay:${i * 0.12}s`}>
           <img
-            src={src}
+            src={variant(src, 800)}
+            srcset={`${variant(src, 480)} 480w, ${variant(src, 800)} 800w, ${variant(src, 1200)} 1200w`}
+            sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 800px"
             alt={captions[i]}
             width="800"
             height="600"
             loading={i === 0 ? 'eager' : 'lazy'}
+            fetchpriority={i === 0 ? 'high' : 'auto'}
             decoding="async"
             class="gallery-photo"
           />
@@ -57,10 +62,12 @@ const captions = [
 .gallery-photo {
   width: 100%;
   height: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
   transition: transform .6s ease;
 }
+.gallery-item--0 .gallery-photo { aspect-ratio: 3 / 4; }
 .gallery-item:hover .gallery-photo { transform: scale(1.03); }
 .gallery-caption {
   font-size: var(--text-xs);
@@ -73,5 +80,6 @@ const captions = [
 @media (max-width: 600px) {
   .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
   .gallery-item--0, .gallery-item--1, .gallery-item--2 { grid-column: auto; grid-row: auto; }
+  .gallery-item--0 .gallery-photo { aspect-ratio: 4 / 3; }
 }
 </style>

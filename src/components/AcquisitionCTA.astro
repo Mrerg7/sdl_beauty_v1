@@ -7,24 +7,33 @@ const heroImg = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf24a1e4-852d-
     <div class="acq-overlay" />
   </div>
   <div class="container acq-content reveal">
-    <p class="ornament acq-eyebrow">One Step</p>
+    <p class="ornament acq-eyebrow">One Step — exclusive single-asset sale</p>
     <h2 id="acq-heading">Move It Forward.</h2>
     <p class="acq-sub">
       SDL Beauty is available now. Inquire confidentially — no forms, no friction.
-      A direct line to the people who hold the keys.
+      A direct line to the people who hold the keys. Escrow-secured transfer, NDA on request.
     </p>
-    <a
-      href={`mailto:${email}?subject=SDL Beauty Brand Acquisition Inquiry&body=Hello%2C%0A%0AI am interested in acquiring the SDL Beauty brand. Please send details.%0A%0AThank you.`}
-      class="btn-cta acq-btn"
-      aria-label="Email sales@desertrich.com to acquire SDL Beauty"
-    >
-      Email sales@desertrich.com
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-        <polyline points="22,6 12,13 2,6"/>
-      </svg>
-    </a>
-    <p class="acq-email-plain">{email}</p>
+    <div class="acq-ctas">
+      <a
+        href={`mailto:${email}?subject=SDL Beauty Brand Acquisition Inquiry&body=Hello%2C%0A%0AI am interested in acquiring the SDL Beauty brand. Please send details.%0A%0AThank you.`}
+        class="btn-cta acq-btn"
+        aria-label="Email sales@desertrich.com to acquire SDL Beauty"
+        data-cta="final-buy"
+      >
+        Buy Now — Email sales@desertrich.com
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </a>
+      <a href={`mailto:${email}?subject=${encodeURIComponent('Offer: sdl.beauty brand')}`} class="btn-ghost btn-ghost--light" data-cta="final-offer">Make an Offer</a>
+    </div>
+    <ul class="acq-trust" aria-label="Trust signals">
+      <li>◈ Escrow.com-style protection</li>
+      <li>◎ SSL secured</li>
+      <li>⬣ Confidential · NDA available</li>
+    </ul>
+    <p class="acq-email-plain"><a href={`mailto:${email}`} data-cta="final-email-plain">{email}</a></p>
   </div>
 </section>
 
@@ -64,7 +73,7 @@ const heroImg = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf24a1e4-852d-
   margin-bottom: var(--space-6);
 }
 .acq-sub {
-  font-size: var(--text-base);
+  font-size: 1rem;
   font-weight: 300;
   color: rgba(255,255,255,.75);
   max-width: 52ch;
@@ -72,8 +81,18 @@ const heroImg = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf24a1e4-852d-
   text-align: center;
   margin-bottom: var(--space-10);
 }
+.acq-ctas { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
 .acq-btn { background: var(--color-primary); font-size: var(--text-sm); }
 .acq-btn:hover { background: var(--color-primary-dark); }
+.btn-ghost--light { color: #fff; border-color: rgba(255,255,255,.4); }
+.btn-ghost--light:hover { border-color: #d4b47a; color: #d4b47a; }
+.acq-trust {
+  list-style: none;
+  display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: center;
+  margin-top: var(--space-6);
+  font-size: var(--text-xs); letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+}
 .acq-email-plain {
   margin-top: var(--space-4);
   font-size: var(--text-xs);
@@ -81,4 +100,5 @@ const heroImg = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/cf24a1e4-852d-
   letter-spacing: .1em;
   color: rgba(255,255,255,.45);
 }
+.acq-email-plain a { color: inherit; text-decoration: underline; text-underline-offset: 3px; min-height: 48px; display: inline-flex; align-items: center; }
 </style>

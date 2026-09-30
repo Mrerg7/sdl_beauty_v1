@@ -2,11 +2,14 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
 import BrandValue from '../components/BrandValue.astro';
 import Gallery from '../components/Gallery.astro';
 import WhatYouGet from '../components/WhatYouGet.astro';
 import BuyerFit from '../components/BuyerFit.astro';
+import FAQ from '../components/FAQ.astro';
 import AcquisitionCTA from '../components/AcquisitionCTA.astro';
+import ExitIntent from '../components/ExitIntent.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
@@ -15,7 +18,7 @@ const brand = await getEntry('brand', 'sdl');
 const { heroImages, email, ogImage, description, tagline } = brand.data;
 ---
 <Base
-  title={`SDL Beauty — ${tagline}`}
+  title={`sdl.beauty | Premium Domain for Sale | SDL Beauty — ${tagline}`}
   description={description}
   ogImage={ogImage}
   canonicalURL="https://sdl.beauty/"
@@ -23,11 +26,14 @@ const { heroImages, email, ogImage, description, tagline } = brand.data;
   <Nav />
   <main id="main-content">
     <Hero images={heroImages} email={email} />
+    <TrustBar />
     <BrandValue />
     <Gallery images={heroImages} />
     <WhatYouGet />
     <BuyerFit />
+    <FAQ />
     <AcquisitionCTA />
   </main>
   <Footer />
+  <ExitIntent />
 </Base>

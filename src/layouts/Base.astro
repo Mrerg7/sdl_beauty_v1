@@ -7,20 +7,115 @@ export interface Props {
 }
 
 const {
-  title = 'SDL Beauty — Scottsdale Luxury Med Spa Brand | Available',
-  description = 'SDL Beauty is an ultra-premium med spa brand rooted in Scottsdale, AZ — the Beverly Hills of Arizona. This rare brand acquisition opportunity is available now. Contact sales@desertrich.com.',
+  title = 'sdl.beauty | Premium Domain for Sale | SDL Beauty — Scottsdale Luxury Med Spa Brand',
+  description = 'sdl.beauty for sale — premium 3-letter .beauty domain + turnkey Scottsdale luxury med spa brand. Available now via escrow-secured transfer. Contact sales@desertrich.com to acquire or make an offer.',
   ogImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/70f9edbb-f745-453c-c1e3-0547940a9100/public',
   canonicalURL = Astro.url.href,
 } = Astro.props;
 
 const siteName = 'SDL Beauty';
+const lcpImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/70f9edbb-f745-453c-c1e3-0547940a9100/public';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://sdl.beauty/#website",
+      "url": "https://sdl.beauty/",
+      "name": "SDL Beauty",
+      "description": description,
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "ContactAction",
+        "target": "mailto:sales@desertrich.com",
+        "name": "Acquire This Brand"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://sdl.beauty/#org",
+      "name": "SDL Beauty",
+      "url": "https://sdl.beauty/",
+      "logo": ogImage,
+      "email": "sales@desertrich.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Scottsdale",
+        "addressRegion": "AZ",
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+      "@id": "https://sdl.beauty/#business",
+      "name": "SDL Beauty",
+      "description": description,
+      "url": "https://sdl.beauty/",
+      "logo": ogImage,
+      "image": ogImage,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Scottsdale",
+        "addressRegion": "AZ",
+        "addressCountry": "US"
+      },
+      "priceRange": "$$$",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "sales@desertrich.com",
+        "contactType": "sales"
+      },
+      "sameAs": ["https://sdl.beauty/"]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://sdl.beauty/#domain-product",
+      "name": "sdl.beauty — Premium Domain + Luxury Med Spa Brand",
+      "description": "Premium 3-letter .beauty domain with turnkey Scottsdale luxury med spa brand identity and positioning. Escrow-secured transfer.",
+      "brand": { "@type": "Brand", "name": "SDL Beauty" },
+      "category": "Premium domain names / brand acquisition",
+      "image": ogImage,
+      "url": "https://sdl.beauty/",
+      "isRelatedTo": { "@id": "https://sdl.beauty/#business" }
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://sdl.beauty/#offer",
+      "name": "SDL Beauty Brand Acquisition",
+      "description": "Premium luxury med spa brand available for acquisition. Includes sdl.beauty domain, brand identity, and Scottsdale market positioning. Escrow-secured transfer, confidential inquiry.",
+      "seller": {
+        "@type": "Organization",
+        "name": "Desert Rich",
+        "email": "sales@desertrich.com"
+      },
+      "areaServed": { "@type": "Place", "name": "Scottsdale, Arizona" },
+      "category": "Brand Acquisition",
+      "availability": "https://schema.org/InStock",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "USD",
+        "description": "Price on application — serious offers invited"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://sdl.beauty/#breadcrumbs",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sdl.beauty/" }
+      ]
+    }
+  ]
+};
 ---
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f5f0e8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f0e8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#171208" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
 
   <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="g8CKpIgVYfdVMt8e9ICTYqIG2e2557HczUka9HwHV1c" />
@@ -28,8 +123,16 @@ const siteName = 'SDL Beauty';
   <!-- Primary SEO -->
   <title>{title}</title>
   <meta name="description" content={description} />
+  <meta name="keywords" content="buy .beauty domains, sdl.beauty for sale, premium domain names, luxury med spa brand Scottsdale, domain marketplace, investment domains, brandable domains" />
+  <meta name="author" content="SDL Beauty" />
+  <meta name="geo.region" content="US-AZ" />
+  <meta name="geo.placename" content="Scottsdale" />
   <link rel="canonical" href={canonicalURL} />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
@@ -40,7 +143,7 @@ const siteName = 'SDL Beauty';
   <meta property="og:image"       content={ogImage} />
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt"   content="SDL Beauty — Scottsdale luxury med spa brand" />
+  <meta property="og:image:alt"   content="SDL Beauty — Scottsdale luxury med spa brand, sdl.beauty premium domain for sale" />
   <meta property="og:locale"      content="en_US" />
 
   <!-- Twitter / X -->
@@ -48,71 +151,34 @@ const siteName = 'SDL Beauty';
   <meta name="twitter:title"       content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image"       content={ogImage} />
+  <meta name="twitter:image:alt"   content="SDL Beauty — sdl.beauty premium domain for sale" />
 
   <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://sdl.beauty/#website",
-        "url": "https://sdl.beauty/",
-        "name": "SDL Beauty",
-        "description": description,
-        "potentialAction": {
-          "@type": "ContactAction",
-          "target": "mailto:sales@desertrich.com",
-          "name": "Acquire This Brand"
-        }
-      },
-      {
-        "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
-        "@id": "https://sdl.beauty/#business",
-        "name": "SDL Beauty",
-        "description": description,
-        "url": "https://sdl.beauty/",
-        "logo": ogImage,
-        "image": ogImage,
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Scottsdale",
-          "addressRegion": "AZ",
-          "addressCountry": "US"
-        },
-        "priceRange": "$$$",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "sales@desertrich.com",
-          "contactType": "sales"
-        },
-        "sameAs": ["https://sdl.beauty/"]
-      },
-      {
-        "@type": "Offer",
-        "@id": "https://sdl.beauty/#offer",
-        "name": "SDL Beauty Brand Acquisition",
-        "description": "Premium luxury med spa brand available for acquisition. Includes sdl.beauty domain, brand identity, and Scottsdale market positioning.",
-        "seller": {
-          "@type": "Organization",
-          "name": "Desert Rich",
-          "email": "sales@desertrich.com"
-        },
-        "areaServed": {
-          "@type": "Place",
-          "name": "Scottsdale, Arizona"
-        },
-        "category": "Brand Acquisition"
-      }
-    ]
-  })} />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
-  <!-- Fonts -->
+  <!-- Performance: preconnect + LCP preload -->
+  <link rel="preconnect" href="https://imagedelivery.net" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" /></noscript>
 
-  <!-- SVG Favicon -->
+  <!-- PWA / icons -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23b8965a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia' font-size='16' font-weight='600' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+
+  <script is:inline>
+    try {
+      const t = localStorage.getItem('sdl-theme');
+      if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    } catch (e) {}
+  </script>
 
   <slot name="head" />
 </head>
@@ -127,6 +193,25 @@ const siteName = 'SDL Beauty';
       { threshold: 0.12 }
     );
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Lightweight CTA click tracking (works with CF Web Analytics / Zaraz dataLayer)
+    document.addEventListener('click', (ev) => {
+      const a = ev.target.closest('[data-cta]');
+      if (!a) return;
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'cta_click', cta: a.getAttribute('data-cta'), href: a.getAttribute('href') });
+      } catch (e) {}
+    });
+    // Theme toggle (progressive enhancement — button rendered in Nav)
+    document.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('[data-theme-toggle]');
+      if (!btn) return;
+      const root = document.documentElement;
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('sdl-theme', next); } catch (e) {}
+      btn.setAttribute('aria-pressed', String(next === 'dark'));
+    });
   </script>
 </body>
 </html>

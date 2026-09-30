@@ -8,7 +8,12 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     tailwind({ applyBaseStyles: false }),
-    sitemap(),
+    sitemap({
+      changefreq: 'weekly',
+      priority: 1.0,
+      lastmod: new Date(),
+      filter: (page) => !page.includes('/404'),
+    }),
   ],
   image: {
     remotePatterns: [
@@ -20,6 +25,7 @@ export default defineConfig({
       // Explicitly use esbuild for CSS — avoids Vite 6 auto-selecting
       // lightningcss which is not available in the CF Pages build env
       cssMinify: 'esbuild',
+      minify: 'esbuild',
     },
   },
 });

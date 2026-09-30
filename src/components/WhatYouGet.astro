@@ -1,11 +1,11 @@
 ---
 const assets = [
-  { icon: '◇', label: 'sdl.beauty domain', detail: 'Premium .beauty TLD, 3-letter acronym. Highly memorable and brandable.' },
+  { icon: '◇', label: 'sdl.beauty domain', detail: 'Premium .beauty TLD, 3-letter acronym. Highly memorable and brandable. Clean title, immediate registrar transfer.' },
   { icon: '◇', label: 'Brand identity foundation', detail: 'Clean visual identity ready to build on — logo, type, color system.' },
   { icon: '◇', label: 'Scottsdale positioning', detail: "Pre-built market narrative in AZ's highest-income aesthetic market." },
-  { icon: '◇', label: 'SEO-ready website', detail: 'Structured data, sitemap, OG meta, Cloudflare Pages global edge delivery.' },
-  { icon: '◇', label: 'No liabilities', detail: 'Zero customer relationships, reviews, or reputation to inherit. Start clean.' },
-  { icon: '◇', label: 'Immediate transfer', detail: 'Domain and brand assets transfer upon confirmed acquisition.' },
+  { icon: '◇', label: 'SEO-ready website', detail: 'Structured data (Product, Offer, FAQ), sitemap, OG meta, Cloudflare global edge delivery.' },
+  { icon: '◇', label: 'Escrow-secured transaction', detail: 'Funds held by licensed escrow and released only when the domain is in your account. NDA available.' },
+  { icon: '◇', label: 'No liabilities · Immediate transfer', detail: 'Zero customer relationships, reviews, or reputation to inherit. Domain and brand assets transfer upon confirmed acquisition.' },
 ];
 ---
 <section class="wyg" aria-labelledby="wyg-heading">
@@ -19,6 +19,7 @@ const assets = [
           positioning, and a Scottsdale story that resonates with affluent clientele
           the moment they encounter it.
         </p>
+        <p class="wyg-guarantee">◈ Transaction guarantee: escrow-secured · SSL · confidential</p>
       </div>
       <ul class="wyg-list" role="list">
         {assets.map(a => (
@@ -54,11 +55,18 @@ const assets = [
 }
 .wyg-left h2 em { font-style: italic; color: var(--color-primary); }
 .wyg-intro {
-  font-size: var(--text-base);
+  font-size: 1rem;
   font-weight: 300;
   color: var(--color-text-muted);
   line-height: 1.7;
   max-width: 46ch;
+}
+.wyg-guarantee {
+  margin-top: var(--space-6);
+  font-size: var(--text-xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
 }
 .wyg-list {
   list-style: none;

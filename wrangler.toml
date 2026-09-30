@@ -1,2 +1,8 @@
 name = "sdl-beauty"
 pages_build_output_dir = "dist"
+compatibility_date = "2025-04-30"
+
+# Free-plan only: static assets + lightweight Functions, no paid bindings.
+[vars]
+SITE_URL = "https://sdl.beauty"
+CONTACT_EMAIL = "sales@desertrich.com"

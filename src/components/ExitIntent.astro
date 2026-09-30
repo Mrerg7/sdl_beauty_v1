@@ -1,0 +1,52 @@
+---
+const email = 'sales@desertrich.com';
+---
+<div class="exit-overlay" id="exit-overlay" role="dialog" aria-modal="true" aria-labelledby="exit-heading" aria-hidden="true">
+  <div class="exit-card">
+    <p class="ornament">Before you go</p>
+    <h2 id="exit-heading">Interested in sdl.beauty?</h2>
+    <p>Single-asset sale — once it's gone, it's gone. Send a confidential inquiry or make an offer today; escrow-secured transfer.</p>
+    <div class="exit-actions">
+      <a href={`mailto:${email}?subject=${encodeURIComponent('SDL Beauty — confidential inquiry')}`} class="btn-cta" data-cta="exit-inquire">Inquire now</a>
+      <a href={`mailto:${email}?subject=${encodeURIComponent('Offer: sdl.beauty')}`} class="btn-ghost" data-cta="exit-offer">Make an offer</a>
+    </div>
+    <button type="button" class="exit-close" id="exit-close">Continue browsing</button>
+  </div>
+</div>
+<div class="sticky-cta" role="region" aria-label="Quick acquisition actions">
+  <a href={`mailto:${email}?subject=${encodeURIComponent('SDL Beauty Brand Acquisition Inquiry')}`} class="btn-cta" data-cta="sticky-acquire">Acquire sdl.beauty</a>
+</div>
+<script is:inline>
+  (function () {
+    var shown = false;
+    try { shown = sessionStorage.getItem('sdl-exit-shown') === '1'; } catch (e) {}
+    var overlay = document.getElementById('exit-overlay');
+    var closeBtn = document.getElementById('exit-close');
+    function open() {
+      if (shown || !overlay) return;
+      shown = true;
+      try { sessionStorage.setItem('sdl-exit-shown', '1'); } catch (e) {}
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+    function close() {
+      if (!overlay) return;
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    // Desktop exit-intent
+    document.addEventListener('mouseout', function (e) {
+      if (!e.relatedTarget && e.clientY <= 0) open();
+    });
+    // Mobile: timed fallback after 75s, once per session
+    setTimeout(function () {
+      if (!shown && matchMedia('(max-width: 720px)').matches) {
+        var scrolled = window.scrollY / Math.max(1, document.body.scrollHeight - innerHeight);
+        if (scrolled > 0.4) open();
+      }
+    }, 75000);
+  })();
+</script>

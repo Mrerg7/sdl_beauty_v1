@@ -1,0 +1,18 @@
+---
+const trust = [
+  { icon: '◈', label: 'Escrow-secured transfer' },
+  { icon: '◎', label: 'SSL + Cloudflare edge delivery' },
+  { icon: '⬣', label: 'Confidential inquiry — NDA on request' },
+  { icon: '✓', label: 'Clean title — no liabilities' },
+];
+---
+<div class="trustbar" role="region" aria-label="Transaction assurances">
+  <div class="container trustbar-inner">
+    {trust.map(t => (
+      <span class="trustbar-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        {t.label}
+      </span>
+    ))}
+  </div>
+</div>

@@ -1,4 +1,5 @@
 ---
+const email = 'sales@desertrich.com';
 const buyers = [
   'Med spa groups seeking luxury Southwest expansion',
   'Aesthetic clinic chains building a premium sub-brand',
@@ -18,9 +19,15 @@ const buyers = [
         who understands that brand equity in luxury aesthetics compounds over time.
         If any of these describe you, reach out.
       </p>
-      <a href="mailto:sales@desertrich.com" class="btn-cta" style="margin-top: var(--space-8)">
-        Contact sales@desertrich.com
-      </a>
+      <div class="bf-ctas" style="margin-top: var(--space-8); display:flex; gap:.75rem; flex-wrap:wrap">
+        <a href={`mailto:${email}?subject=${encodeURIComponent('SDL Beauty — contact an agent')}`} class="btn-cta" data-cta="buyer-contact">
+          Contact Agent
+        </a>
+        <a href={`mailto:${email}?subject=${encodeURIComponent('Offer: sdl.beauty')}`} class="btn-ghost" data-cta="buyer-offer">
+          Make Offer
+        </a>
+      </div>
+      <p class="bf-note">Prefer email directly? <a href={`mailto:${email}`} data-cta="buyer-email-plain">{email}</a></p>
     </div>
     <ul class="bf-list reveal" role="list">
       {buyers.map(b => (
@@ -52,12 +59,14 @@ const buyers = [
 }
 .bf-text h2 em { font-style: italic; color: var(--color-primary); }
 .bf-body {
-  font-size: var(--text-base);
+  font-size: 1rem;
   font-weight: 300;
   color: var(--color-text-muted);
   line-height: 1.7;
   max-width: 48ch;
 }
+.bf-note { margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-faint); }
+.bf-note a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; min-height: 48px; display: inline-flex; align-items: center; }
 .bf-list {
   list-style: none;
   display: flex;
@@ -68,7 +77,7 @@ const buyers = [
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  font-size: var(--text-base);
+  font-size: 1rem;
   font-weight: 300;
   color: var(--color-text-muted);
   padding: var(--space-4) var(--space-6);

@@ -10,9 +10,12 @@ const email = 'sales@desertrich.com';
       </svg>
       <span class="nav-logo-sub">Beauty</span>
     </a>
-    <a href={`mailto:${email}`} class="btn-cta" aria-label="Acquire SDL Beauty brand">
-      Move It Forward
-    </a>
+    <div class="nav-actions">
+      <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle dark mode">◐</button>
+      <a href={`mailto:${email}`} class="btn-cta" aria-label="Acquire SDL Beauty brand" data-cta="nav-acquire">
+        Move It Forward
+      </a>
+    </div>
   </nav>
 </header>
 
@@ -26,16 +29,20 @@ const email = 'sales@desertrich.com';
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(42, 34, 24, 0.08);
 }
+[data-theme="dark"] .nav-wrap { background: rgba(23, 18, 8, 0.92); }
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding-block: var(--space-4);
 }
+.nav-actions { display: flex; align-items: center; gap: .75rem; }
 .nav-logo {
   display: flex;
   align-items: baseline;
   gap: .35rem;
+  min-height: 48px;
   color: var(--color-text);
   font-family: 'Cormorant Garamond', Georgia, serif;
   transition: opacity 200ms;
