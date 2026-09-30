@@ -44,3 +44,7 @@
 ### Deployment
 - Backup branch before push; deploy via `wrangler pages deploy dist`
 - Post-deploy: monitor 48h, resubmit sitemap in Google Search Console
+- NOTE 2026-09-30: `functions/api/health.js` removed after deploy-stage failure
+  (`No such module "node:stream"` — project lacks `nodejs_compat` flag).
+  Site ships 100% static (proven stable). To re-add an API route later,
+  enable `nodejs_compat` in Pages dashboard → Functions → Compatibility flags.
